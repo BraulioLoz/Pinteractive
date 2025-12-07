@@ -1,6 +1,6 @@
 # Pinteractive
 
 ## Nombres
-• Braulio Alejandro Lozano Cuevas
-• 
+- Braulio Alejandro Lozano Cuevas
+- Arindal Contreras Arellano
 • 
