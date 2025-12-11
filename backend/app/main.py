@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-# from .routers import discovery, posts
+from .routers import discovery
+# from .routers import posts
 from .database import engine
 # from . import models
 
@@ -27,7 +28,7 @@ app.add_middleware(
 )
 
 # Registrar routers
-# app.include_router(discovery.router)
+app.include_router(discovery.router)
 # app.include_router(posts.router)
 
 
