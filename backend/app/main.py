@@ -1,11 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-# from .routers import discovery, posts
+# from .routers import discovery 
+from .routers import posts
 from .database import engine
-# from . import models
+from . import models
 
 # Crear las tablas en la base de datos
-# models.Base.metadata.create_all(bind=engine)
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Pinteractive API",
@@ -28,7 +29,7 @@ app.add_middleware(
 
 # Registrar routers
 # app.include_router(discovery.router)
-# app.include_router(posts.router)
+app.include_router(posts.router)
 
 
 @app.get("/")
