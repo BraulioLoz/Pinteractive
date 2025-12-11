@@ -1,0 +1,33 @@
+.nav-logo {
+  height: 32px;
+  width: auto;
+}
+
+.brand-text {
+  font-size: 1.4rem;
+  letter-spacing: -0.5px;
+  color: #d6006e; 
+}
+
+/* Botón primario */
+.btn-primary {
+  background-color: #d6006e !important;
+  border-color: #d6006e !important;
+}
+
+.btn-primary:hover {
+  background-color: #cc6699c2 ;
+  border-color: #cc6699c2;
+}
+
+/* Botón outline */
+.btn-outline-primary {
+  color: #d6006e !important;
+  border-color: #d6006e !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: #cc6699c2 !important;
+  color: white;
+  border-color: #cc6699c2;
+}

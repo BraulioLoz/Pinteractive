@@ -1,31 +1,19 @@
-import { useState } from 'react'
-import LoginControl from './components/User/LoginControl' // Importar el control
-import './App.css'
+import Navbar from "./components/Navbar/NavbarLogIn";
+import Landing from "./pages/Landing.jsx";
+import { Routes, Route } from "react-router-dom";
+import Registro from "./pages/Registro.jsx";
+import Login from "./pages/Login";
 
-function App() {
-  const [count, setCount] = useState(0)
 
+export default function App() {
   return (
-    <div className="container mt-5"> {/* Container de Bootstrap */}
-      
-      {/* Barra superior temporal */}
-      <nav className="d-flex justify-content-between align-items-center mb-5 p-3 bg-dark rounded">
-        <h1 className="h4 text-white m-0">Pinteractive</h1>
-        <LoginControl /> {/* Aquí está tu componente de usuario */}
-      </nav>
-
-      <div className="card text-center p-5">
-        <h2>Contenido del sitio</h2>
-        <p>Aquí irán los posts más adelante.</p>
-        {/* El resto de tu código por defecto de Vite... */}
-        <div className="card-body">
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-          </button>
-        </div>
-      </div>
-    </div>
-  )
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/registro" element={<Registro />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </>
+  );
 }
-
-export default App
