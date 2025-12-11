@@ -52,6 +52,26 @@ def read_post(post_id: int, db: Session = Depends(database.get_db)):
         raise HTTPException(status_code=404, detail="Post no encontrado")
     return post
 
+# 3.5 READ METADATA (OpenGraph / Social Share)
+@router.get("/{post_id}/meta")
+def read_post_meta(post_id: int, db: Session = Depends(database.get_db)):
+    """
+    Endpoint ligero para obtener metadatos de OpenGraph.
+    Ideal para crawlers de redes sociales (WhatsApp, Twitter, Facebook).
+    """
+    post = db.query(models.Post.title, models.Post.description, models.Post.image_url).filter(models.Post.id == post_id).first()
+    
+    if not post:
+        raise HTTPException(status_code=404, detail="Post no encontrado")
+
+    return {
+        "title": post.title,
+        "description": post.description or "Mira esta imagen en Pinteractive",
+        "image": post.image_url,
+        "type": "article",
+        "card": "summary_large_image"
+    }
+
 # 4. UPDATE (Actualizar post)
 # Protegido, necesita autenticación. (x-user-id)
 @router.put("/{post_id}", response_model=schemas.PostResponse)
