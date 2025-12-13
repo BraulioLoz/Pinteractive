@@ -1,12 +1,12 @@
 import "./Landing.css";
 import albumHumbe from "../assets/album-humbe.jpg";
-import albumEminem from "../assets/album-eminem.jpg";
-import albumBls from "../assets/album-bls.jpg";
+import albumID from "../assets/album-loom.jpg";
+import albumDL from "../assets/album-DL.jpg";
 import albumZoe from "../assets/album-zoe.jpg";
 //Página en el que aterriza el usuario al entrar a la web
 
 //creamos un arreglo con las imagenes
-const images = [albumHumbe, albumEminem, albumBls, albumZoe];
+const images = [albumHumbe, albumID, albumDL, albumZoe];
 
 //Componente Landing
 export default function Landing() {
