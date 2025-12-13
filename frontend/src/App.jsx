@@ -3,6 +3,8 @@ import Landing from "./pages/Landing.jsx";
 import { Routes, Route } from "react-router-dom";
 import Registro from "./pages/Registro.jsx";
 import Login from "./pages/Login";
+import Explore from "./pages/Explore.jsx";
+
 
 
 export default function App() {
@@ -13,6 +15,7 @@ export default function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/explore" element={<Explore/>} />
       </Routes>
     </>
   );
