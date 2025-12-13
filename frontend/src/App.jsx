@@ -1,8 +1,11 @@
-import Navbar from "./components/Navbar/NavbarLogIn";
-import Landing from "./pages/Landing.jsx";
 import { Routes, Route } from "react-router-dom";
-import Registro from "./pages/Registro.jsx";
+import { UserProvider } from "./context/UserContext";
+import Navbar from "./components/Navbar/NavbarLogin.jsx";
+import Landing from "./pages/Landing.jsx";
 import Login from "./pages/Login";
+import Registro from "./pages/Registro.jsx";
+
+import PrivateRoute from "./routes/PrivateRoute";
 
 
 export default function App() {
