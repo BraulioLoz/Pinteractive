@@ -1,22 +1,96 @@
 .login-wrapper {
-  position: relative;
-  min-height: 100vh;
-  width: 100vw;           
-  margin: 0;
-  padding: 100px 16px 32px;  
+  min-height: 100vh; 
   display: flex;
+  position: relative;
   justify-content: center;
+  width: 100vw;
   align-items: center;
-  background: linear-gradient(135deg, #406b9f, #9a239d);
+  padding: 32px 16px;
   box-sizing: border-box;
+
+  background: linear-gradient(
+    135deg,
+    #1f2c3a,
+    #4c7ff0,
+    #e0006e
+  );
 }
 
 .login-card {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(10px);
-  padding: 32px;
-  width: 350px;
-  border-radius: 20px;
+  width: 100%;
+  max-width: 380px;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+
+  padding: 36px 32px;
+  border-radius: 22px;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+
   color: white;
-  box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+}
+
+.login-card h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+
+.login-card input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+
+  border-radius: 12px;
+  border: none;
+
+  font-size: 16px;
+
+  background: rgba(255, 255, 255, 0.85);
+  color: #222;
+
+  outline: none;
+}
+
+.login-card input::placeholder {
+  color: #666;
+}
+
+/* Focus bonito */
+.login-card input:focus {
+  box-shadow: 0 0 0 2px rgba(224, 0, 110, 0.4);
+}
+
+
+.login-card .text-danger {
+  font-size: 14px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+
+.login-card button {
+  width: 100%;
+  padding: 14px;
+
+  border-radius: 999px;
+  border: none;
+
+  background: #e0006e;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.login-card button:hover {
+  transform: translateY(-1px);
+  background: #c70061;
+  box-shadow: 0 8px 20px rgba(224, 0, 110, 0.35);
 }
