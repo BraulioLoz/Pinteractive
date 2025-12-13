@@ -6,18 +6,18 @@ const UserContext = createContext();
 // Creamos el provider (el componente que envolvera la app)
 export const UserProvider = ({ children}) => {
     const [user, setUser] = useState(null);
-
+    // Cargar usuario desde sessionStorage al iniciar la app
     useEffect(() => {
         const storedUser = sessionStorage.getItem('user');
         if (storedUser) {
-            setUser(storedUser);
+            setUser(JSON.parse(storedUser));
         }
-    }, []);
+    }, []); //solo se ejecuta una vez 
 
     // Funcion para login
-    const login = (username) => {
-        sessionStorage.setItem('user', username);
-        setUser(username);
+    const login = (userData) => {
+        sessionStorage.setItem('user', userData);
+        setUser(userData);
     };
 
     // Funcion para logout
@@ -34,5 +34,4 @@ export const UserProvider = ({ children}) => {
 };
 
 // Hook para usarlo facil en cualquier componente
-
 export const useUser = () => useContext(UserContext);

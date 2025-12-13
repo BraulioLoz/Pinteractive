@@ -1,44 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserContext";
 import "./Login.css";
 
+// Componente de Login
 export default function Login() {
-  const [email, setEmail] = useState("");
+  const [identifier, setIdentifier] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
   const navigate = useNavigate();
-  const { login } = useUser();
+  // Obtenemos el usuario y la función de login desde el contexto
+  const { user, login } = useUser();
+  // Si ya hay un usuario logueado, redirigimos al feed
+  useEffect(() => {
+    if (user) {
+      navigate("/feed");
+    }
+  }, [user, navigate]); //cambia si user o navigate cambian
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Validación básica
-    if (!email.includes("@") || !email.includes(".")) {
-      return setError("Ingresa un correo válido.");
+    if (!identifier || !password) {
+      return setError("Completa todos los campos.");
     }
 
-    // Leer usuarios guardados (simulación de BD)
+    // Leer usuarios guardados en localStorage
     const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-    // Verificar si existe
-    const exists = users.find((u) => u.email === email);
+    const foundUser = users.find((u) => u.email === identifier || u.username === identifier);
 
-    if (!exists) {
-      return setError("No existe una cuenta con este correo.");
+    if (!foundUser) {
+      return setError("Usuario o correo no encontrado.");
+    }
+
+    if (foundUser.password !== password) {
+      return setError("Contraseña incorrecta.");
     }
 
     // Crear sesión
-    login(email);
-
-    /* 
-       AQUI IRÍA TU BACKEND REAL:
-       - Enviar correo/contraseña al servidor
-       - Recibir token JWT
-       - Guardarlo en sessionStorage
-       - login(token)
-    */
-
+    login(foundUser);
+    // Ahora si entramos al feed
     navigate("/feed");
   };
 
@@ -48,11 +50,17 @@ export default function Login() {
         <h2 className="mb-4">Iniciar sesión</h2>
 
         <input
-          type="email"
-          className="form-control mb-3"
-          placeholder="Correo electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Correo electrónico o usuario"
+          value={identifier}
+          onChange={(e) => setIdentifier(e.target.value)}
+          required
+        />
+
+        <input
+          type="password"
+          placeholder="Contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
 
