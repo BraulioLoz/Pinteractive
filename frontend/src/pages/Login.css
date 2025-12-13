@@ -9,10 +9,10 @@
   box-sizing: border-box;
 
   background: linear-gradient(
-    135deg,
-    #1f2c3a,
-    #4c7ff0,
-    #e0006e
+  180deg,
+  #A9D7D6,
+  #E53935,
+  #F5C542
   );
 }
 
@@ -79,7 +79,7 @@
   border-radius: 999px;
   border: none;
 
-  background: #e0006e;
+  background: #1F5E3B;
   color: white;
 
   font-size: 16px;
@@ -91,6 +91,6 @@
 
 .login-card button:hover {
   transform: translateY(-1px);
-  background: #c70061;
+  background: #1F5E3B;
   box-shadow: 0 8px 20px rgba(224, 0, 110, 0.35);
 }

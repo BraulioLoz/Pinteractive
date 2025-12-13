@@ -12,11 +12,11 @@ html, body {
 .landing-wrapper {
   width: 100vw;
   background: linear-gradient(
-    135deg,
-    rgba(31,44,58,0.85),
-    rgba(76,127,240,0.70),
-    rgba(224,0,110,0.70)
-  );
+  180deg,
+  #A9D7D6,
+  #E53935,
+  #F5C542
+);
   min-height: calc(100vh - 80px);
   display: flex;
   align-items: center;
@@ -98,7 +98,7 @@ html, body {
 .landing-text p {
   font-size: 20px;
   margin-bottom: 24px;
-  color: black;
+  color: rgba(255, 255, 255, 0.78);
 }
 
 /* =========================
@@ -107,7 +107,7 @@ html, body {
 
 .btn-explore {
   padding: 14px 28px;
-  background: #d6006e;
+  background: #1F5E3B;
   color: white;
   border: none;
   border-radius: 24px;
