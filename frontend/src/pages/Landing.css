@@ -91,7 +91,7 @@ html, body {
   font-size: 48px;
   font-weight: bold;
   margin-bottom: 16px;
-  color: white;
+  color: #ECE69D;
   line-height: 1.15;
 }
 
@@ -107,7 +107,7 @@ html, body {
 
 .btn-explore {
   padding: 14px 28px;
-  background: #1F5E3B;
+  background: #7A9445;
   color: white;
   border: none;
   border-radius: 24px;

@@ -6,28 +6,28 @@
 .brand-text {
   font-size: 1.4rem;
   letter-spacing: -0.5px;
-  color: #1F5E3B; 
+  color: #7A9445; 
 }
 
 /* Botón primario */
 .btn-primary {
-  background-color: #1F5E3B !important;
-  border-color: #1F5E3B !important;
+  background-color: #7A9445 !important;
+  border-color: #7A9445 !important;
 }
 
 .btn-primary:hover {
-  background-color: #95b07b ;
-  border-color: #6F8F4E;
+  background-color: #a2b88c ;
+  border-color: #a2b88c;
 }
 
 /* Botón outline */
 .btn-outline-primary {
   color: #1F5E3B !important;
-  border-color: #1F5E3B !important;
+  border-color: #7A9445 !important;
 }
 
 .btn-outline-primary:hover {
-  background-color: #6F8F4E !important;
+  background-color: #a2b88c !important;
   color: white;
   border-color: #1F5E3B;
 }
