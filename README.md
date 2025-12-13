@@ -1,10 +1,11 @@
 # Pinteractive
 
-## Nombres
-- Braulio Alejandro Lozano Cuevas
-- Arindal Contreras Arellano
-- Brenda Montaño Oseguera 
-
+## Integrantes del equipo
+| Fotografía | Nombre | Rol |
+|-------------|---------|------|
+| <img src="img/Ari.jpeg" width="100" height="100" style="border-radius:50%;object-fit:cover;object-position:center top;"> | **Arindal Contreras** | Desarrollo LogIn y Landing Pages |
+| <img src="" width="100" height="100" style="border-radius:50%;object-fit:cover;object-position:center top;"> | *Braulio Alejandro Lozano Cuevasda** | Diseño del backend  | 
+| <img src="" width="100" height="100" style="border-radius:50%;object-fit:cover;object-position:center top;"> | **Brenda Montaño Oseguera ** | Desarrollo de Feed Page|
 ---
 
 ## Documentación del Backend
