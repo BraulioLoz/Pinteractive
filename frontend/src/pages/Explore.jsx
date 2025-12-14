@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { apiFetch } from "../services/api";
+import { useNavigate } from "react-router-dom";
 import { appendMusicKeyword, getMusicSearchSuggestions } from "../utils/musicKeywords";
 
 export default function Explore() {
+  const navigate = useNavigate();
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
@@ -73,6 +75,23 @@ export default function Explore() {
       >
         Pinteractive
       </h1>
+
+      <button
+        onClick={() => navigate("/")}
+        style={{
+          padding: "10px 16px",
+          borderRadius: "8px",
+          border: "2px solid #7a9b3a",
+          background: "#7a9b3a",
+          color: "white",
+          cursor: "pointer",
+          whiteSpace: "nowrap",
+          fontWeight: 600,
+          fontSize: "14px",
+        }}
+      >
+        ← Inicio
+      </button>
 
       <div style={{ flex: 1, maxWidth: "520px" }}>
         <input
