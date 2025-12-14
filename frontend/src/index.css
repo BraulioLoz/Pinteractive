@@ -24,8 +24,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -65,4 +63,33 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+/* Masonry responsive tipo Pinterest */
+
+.masonry {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 576px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 992px) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1200px) {
+  .masonry {
+    column-count: 4;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
 }
