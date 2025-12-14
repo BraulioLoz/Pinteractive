@@ -202,6 +202,17 @@ export default function CreatePostModal({ show, onClose, onPostCreated }) {
           overflow-y: auto;
           box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
+        .modal-content-custom .modal-header {
+          padding: 0 0 16px 0;
+          margin-bottom: 8px;
+        }
+        .modal-content-custom .modal-body {
+          padding: 0;
+        }
+        .modal-content-custom .modal-footer {
+          padding: 16px 0 0 0;
+          margin-top: 8px;
+        }
       `}</style>
     </div>
   );
