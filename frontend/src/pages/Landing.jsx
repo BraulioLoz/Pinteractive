@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiFetch } from "../services/api";
 import { useUser } from "../context/UserContext";
+import { logAndHandleError } from "../utils/errorHandler";
 import {
   CreatePostModal,
   EditPostModal,
@@ -70,8 +71,8 @@ export default function Landing() {
         await fetchAllPosts();
       }
     } catch (err) {
-      console.error("Error loading feed:", err);
-      setError("Error cargando el feed. Intenta de nuevo.");
+      const errorMessage = logAndHandleError(err, "Landing - loadFeed");
+      setError(errorMessage);
       setLoading(false);
     }
   };
@@ -87,8 +88,8 @@ export default function Landing() {
 
       setLoading(false);
     } catch (err) {
-      console.error("Error fetching posts:", err);
-      setError("Error cargando posts. Verifica que el backend esté corriendo.");
+      const errorMessage = logAndHandleError(err, "Landing - fetchAllPosts");
+      setError(errorMessage);
       setLoading(false);
     }
   };
