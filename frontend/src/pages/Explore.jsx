@@ -1,48 +1,129 @@
 import { useEffect, useState } from "react";
 
+const BASE_URL = "/api";
+
 export default function Explore() {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [query, setQuery] = useState("");
+  const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
+
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/discovery/photos?page=1&per_page=12&order_by=popular")
+    let isMounted = true;
+    setLoading(true);
+
+    const hasQuery = search.trim().length > 0;
+
+    const url = hasQuery
+      ? `${BASE_URL}/discovery/search?query=${encodeURIComponent(search)}&page=${page}&per_page=12`
+      : `${BASE_URL}/discovery/photos?page=${page}&per_page=12&order_by=popular`;
+
+    fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setPhotos(data);
+        if (!isMounted) return;
+        const list = Array.isArray(data) ? data : data?.results ?? [];
+        setPhotos((prev) => (page === 1 ? list : [...prev, ...list]));
         setLoading(false);
       })
-      .catch((err) => {
-        console.error("Error fetching photos:", err);
+      .catch(() => {
+        if (!isMounted) return;
+        setPhotos([]);
         setLoading(false);
       });
-  }, []);
 
-  if (loading) {
-    return <p style={{ padding: "2rem" }}>Cargando imágenes...</p>;
-  }
+    return () => {
+      isMounted = false;
+    };
+  }, [search, page]);
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Explorar</h1>
-
+    <div style={{ padding: "2rem", paddingTop: "140px" }}>
+      {/* Barra fija */}
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-          gap: "16px",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 9999,
+          background: "white",
+          borderBottom: "1px solid #eee",
+          padding: "12px 24px",
         }}
       >
-        {photos.map((photo) => (
-          <div key={photo.id}>
-            <img
-              src={photo.url}
-              alt={photo.description || "Imagen"}
-              style={{ width: "100%", borderRadius: "12px" }}
-            />
-          </div>
-        ))}
+        <h1 style={{ margin: "0 0 8px 0" }}>Explorar</h1>
+
+        <div style={{ maxWidth: "520px" }}>
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder='Busca un mood: "chill", "sad", "party"...'
+            style={{
+              width: "100%",
+              padding: "10px 12px",
+              borderRadius: "10px",
+              border: "1px solid #ccc",
+            }}
+          />
+          <button
+            onClick={() => {
+              setPage(1);
+              setSearch(query);}}
+            style={{
+              marginTop: "8px",
+              padding: "8px 16px",
+              borderRadius: "8px",
+              border: "none",
+              background: "#7a9b3a",
+              color: "white",
+              cursor: "pointer",
+            }}
+          >
+            Buscar
+          </button>
+        </div>
       </div>
+
+      {/* Contenido */}
+      {photos.length === 0 && loading ? (
+       <div style={{ height: "40vh" }} />
+      ) : photos.length === 0 ? (
+        <p>No hubo resultados.</p>
+      ) : (
+        <>
+        <div className="container">
+          <div className="masonry">
+    {photos.map((photo) => (
+      <div
+        key={photo.id}
+        className="masonry-item"
+      >
+        <img
+          src={photo.url}
+          alt={photo.description || "Imagen"}
+          className="img-fluid rounded shadow-sm"
+        />
+      </div>
+    ))}
+  </div>
+</div>
+{/*Botón de cargar más*/}
+    <div className="d-flex justify-content-center my-4">
+      <button
+        onClick={() => setPage((prev) => prev + 1)}
+        disabled={loading}
+        className="btn btn-outline-secondary"
+      >
+        {loading ? "Cargando..." : "Cargar más"}
+      </button>
+    </div>
+    </>
+    
+
+      )}
     </div>
   );
 }
-
