@@ -16,7 +16,7 @@ export const UserProvider = ({ children}) => {
 
     // Funcion para login
     const login = (userData) => {
-        sessionStorage.setItem('user', userData);
+        sessionStorage.setItem('user', JSON.stringify(userData));
         setUser(userData);
     };
 

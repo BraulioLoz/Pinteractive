@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-
-const BASE_URL = "/api";
+import { apiFetch } from "../services/api";
 
 export default function Explore() {
   const [photos, setPhotos] = useState([]);
@@ -9,19 +8,17 @@ export default function Explore() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
-
   useEffect(() => {
     let isMounted = true;
     setLoading(true);
 
     const hasQuery = search.trim().length > 0;
 
-    const url = hasQuery
-      ? `${BASE_URL}/discovery/search?query=${encodeURIComponent(search)}&page=${page}&per_page=12`
-      : `${BASE_URL}/discovery/photos?page=${page}&per_page=12&order_by=popular`;
+    const endpoint = hasQuery
+      ? `/discovery/search?query=${encodeURIComponent(search)}&page=${page}&per_page=12`
+      : `/discovery/photos?page=${page}&per_page=12&order_by=popular`;
 
-    fetch(url)
-      .then((res) => res.json())
+    apiFetch(endpoint)
       .then((data) => {
         if (!isMounted) return;
         const list = Array.isArray(data) ? data : data?.results ?? [];
