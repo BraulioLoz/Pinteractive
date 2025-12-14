@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
-import Navbar from "./components/Navbar/NavbarLogin.jsx";
+import Navbar from "./components/Navbar/NavbarLogIn.jsx";
 import Landing from "./pages/Landing.jsx";
 import Login from "./pages/Login";
 import Registro from "./pages/Registro.jsx";
