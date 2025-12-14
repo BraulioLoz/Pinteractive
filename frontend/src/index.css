@@ -93,3 +93,43 @@ button:focus-visible {
   break-inside: avoid;
   margin-bottom: 1rem;
 }
+.feed-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transform: translateY(0);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.feed-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.10);
+}
+
+.feed-card img {
+  width: 100%;
+  display: block;
+  transition: transform 220ms ease;
+}
+
+.feed-card:hover img {
+  transform: scale(1.03);
+}
+.masonry-item {
+  transition: transform 0.2s ease;
+}
+
+.masonry-item img {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.masonry-item:hover {
+  transform: translateY(-4px);
+}
+
+.masonry-item:hover img {
+  transform: scale(1.03);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
