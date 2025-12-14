@@ -1,0 +1,52 @@
+# Variables de Entorno para Pinteractive Backend
+
+Este archivo documenta las variables de entorno necesarias para el backend.
+
+## Variables Requeridas
+
+### UNSPLASH_ACCESS_KEY
+- **Descripción**: API key de Unsplash para obtener imágenes
+- **Requerida**: Sí
+- **Ejemplo**: `UNSPLASH_ACCESS_KEY=tu_api_key_aqui`
+- **Cómo obtenerla**: 
+  1. Crear cuenta en https://unsplash.com/developers
+  2. Crear una aplicación
+  3. Copiar el Access Key
+
+## Variables Opcionales
+
+### ALLOWED_ORIGINS
+- **Descripción**: Orígenes permitidos para CORS, separados por comas
+- **Requerida**: No (default: localhost para desarrollo)
+- **Ejemplo**: `ALLOWED_ORIGINS=http://localhost:5173,https://tu-frontend.onrender.com`
+- **Uso en producción**: Configurar con la URL de tu frontend desplegado
+- **Default**: `http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173`
+
+### DATABASE_URL
+- **Descripción**: URL de conexión a la base de datos
+- **Requerida**: No (default: SQLite local)
+- **Ejemplo SQLite**: `DATABASE_URL=sqlite:///./pinteractive.db`
+- **Ejemplo PostgreSQL**: `DATABASE_URL=postgresql://user:password@host:port/dbname`
+- **Default**: `sqlite:///./pinteractive.db`
+- **Nota**: En Render, si usas PostgreSQL, esta variable se configura automáticamente
+
+## Configuración en Render
+
+1. Ve a tu servicio web en Render Dashboard
+2. Navega a la sección "Environment"
+3. Agrega las variables necesarias:
+   - `UNSPLASH_ACCESS_KEY`: Tu API key de Unsplash
+   - `ALLOWED_ORIGINS`: Orígenes permitidos (ej: tu frontend URL)
+
+## Configuración Local
+
+Crea un archivo `.env` en la carpeta `backend/` con:
+
+```
+UNSPLASH_ACCESS_KEY=tu_api_key_aqui
+ALLOWED_ORIGINS=http://localhost:5173,http://localhost:3000
+DATABASE_URL=sqlite:///./pinteractive.db
+```
+
+**Importante**: No commitees el archivo `.env` (ya está en .gitignore)
+
