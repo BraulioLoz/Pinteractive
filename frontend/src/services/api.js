@@ -3,7 +3,8 @@
  * All API calls should use this to ensure x-user-id header is sent.
  */
 
-const BASE_URL = "/api";
+// Use VITE_API_URL from environment variable in production, or /api proxy in development
+const BASE_URL = import.meta.env.VITE_API_URL || "/api";
 
 /**
  * Make an API request with automatic header injection.
