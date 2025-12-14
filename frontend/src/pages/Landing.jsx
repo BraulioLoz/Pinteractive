@@ -16,7 +16,7 @@ import albumDL from "../assets/album-DL.jpg";
 import albumZoe from "../assets/album-zoe.jpg";
 
 // Static images for hero collage
-const heroImages = [albumHumbe, albumLoom, albumID, albumZoe];
+const heroImages = [albumHumbe, albumID, albumDL, albumZoe];
 
 // LocalStorage keys for caching
 const FEED_POSTS_KEY = "feed_posts";
