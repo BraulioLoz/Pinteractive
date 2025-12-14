@@ -11,12 +11,12 @@ import {
 } from "../components/Post";
 import "./Landing.css";
 import albumHumbe from "../assets/album-humbe.jpg";
-import albumEminem from "../assets/album-eminem.jpg";
-import albumBls from "../assets/album-loom.jpg";
+import albumLoom from "../assets/album-loom.jpg";
+import albumDL from "../assets/album-DL.jpg";
 import albumZoe from "../assets/album-zoe.jpg";
 
 // Static images for hero collage
-const heroImages = [albumHumbe, albumEminem, albumBls, albumZoe];
+const heroImages = [albumHumbe, albumLoom, albumDL, albumZoe];
 
 // LocalStorage keys for caching
 const FEED_POSTS_KEY = "feed_posts";
