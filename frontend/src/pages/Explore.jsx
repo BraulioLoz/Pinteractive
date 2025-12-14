@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { apiFetch } from "../services/api";
+import { appendMusicKeyword, getMusicSearchSuggestions } from "../utils/musicKeywords";
 
 export default function Explore() {
   const [photos, setPhotos] = useState([]);
@@ -8,14 +9,21 @@ export default function Explore() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
+  // Get a random suggestion for the placeholder
+  const suggestions = getMusicSearchSuggestions();
+  const randomSuggestion = suggestions[Math.floor(Math.random() * suggestions.length)];
+
   useEffect(() => {
     let isMounted = true;
     setLoading(true);
 
     const hasQuery = search.trim().length > 0;
 
+    // Apply music keyword to search queries
+    const musicQuery = hasQuery ? appendMusicKeyword(search) : "";
+
     const endpoint = hasQuery
-      ? `/discovery/search?query=${encodeURIComponent(search)}&page=${page}&per_page=12`
+      ? `/discovery/search?query=${encodeURIComponent(musicQuery)}&page=${page}&per_page=12`
       : `/discovery/photos?page=${page}&per_page=12&order_by=popular`;
 
     apiFetch(endpoint)
@@ -70,7 +78,7 @@ export default function Explore() {
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder='Busca un mood: "chill", "sad", "party"...'
+          placeholder={`Busca vibes musicales: "${randomSuggestion}", "lo-fi", "rock"...`}
           style={{
             width: "100%",
             padding: "10px 12px",
