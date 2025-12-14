@@ -11,10 +11,10 @@ export default function Login() {
   const navigate = useNavigate();
   // Obtenemos el usuario y la función de login desde el contexto
   const { user, login } = useUser();
-  // Si ya hay un usuario logueado, redirigimos al feed
+  // Si ya hay un usuario logueado, redirigimos al home
   useEffect(() => {
     if (user) {
-      navigate("/feed");
+      navigate("/");
     }
   }, [user, navigate]); //cambia si user o navigate cambian
 
@@ -40,8 +40,8 @@ export default function Login() {
 
     // Crear sesión
     login(foundUser);
-    // Ahora si entramos al feed
-    navigate("/feed");
+    // Redirigir al home
+    navigate("/");
   };
 
   return (
