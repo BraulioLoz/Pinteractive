@@ -1,0 +1,43 @@
+# Variables de Entorno para Pinteractive Frontend
+
+Este archivo documenta las variables de entorno disponibles para el frontend.
+
+## Variables Opcionales
+
+### VITE_API_URL
+- **Descripción**: URL completa del backend API en producción
+- **Requerida**: No (default: `/api` para desarrollo local con proxy)
+- **Ejemplo para producción**: `VITE_API_URL=https://pinteractive-backend.onrender.com`
+- **Uso**: 
+  - En desarrollo: Se usa el proxy configurado en `vite.config.js` que redirige `/api` a `http://127.0.0.1:8000`
+  - En producción: Debe apuntar a la URL completa del backend desplegado en Render
+
+### VITE_BASE_PATH
+- **Descripción**: Base path para el routing en GitHub Pages
+- **Requerida**: No (default: `/Pinteractive`)
+- **Ejemplo**: `VITE_BASE_PATH=/Pinteractive`
+- **Uso**: 
+  - En GitHub Pages, el repositorio se despliega en `https://brauliiloz.github.io/Pinteractive`
+  - Este path se usa tanto en Vite (`base`) como en React Router (`basename`)
+
+## Configuración Local
+
+Para desarrollo local, crea un archivo `.env` en la carpeta `frontend/` (opcional):
+
+```
+# Solo necesario si quieres cambiar los defaults
+VITE_API_URL=/api
+VITE_BASE_PATH=/
+```
+
+**Nota**: Para desarrollo local, generalmente no necesitas configurar estas variables ya que los defaults funcionan correctamente:
+- `VITE_API_URL` usa `/api` que es manejado por el proxy de Vite
+- `VITE_BASE_PATH` puede quedarse sin configurar o usar `/`
+
+## Configuración en GitHub Actions
+
+En el workflow de GitHub Actions, estas variables se configuran automáticamente:
+- `VITE_API_URL=https://pinteractive-backend.onrender.com`
+- `VITE_BASE_PATH=/Pinteractive`
+
+**Importante**: No commitees el archivo `.env` (ya está en .gitignore)
